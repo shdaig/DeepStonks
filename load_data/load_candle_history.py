@@ -1,3 +1,5 @@
+from time import sleep
+
 import pandas as pd
 
 from tinkoff.invest import CandleInterval, Client, InstrumentIdType
@@ -25,8 +27,9 @@ intervals_tinkoff = {"1m": CandleInterval.CANDLE_INTERVAL_1_MIN,
                      "1h": CandleInterval.CANDLE_INTERVAL_HOUR,
                      "1d": CandleInterval.CANDLE_INTERVAL_DAY}
 interval = "1d"
-tickers = tckrs.get_tickers_from_file("../local_data/tickers_kit.txt")
-# tickers = ["AMEZ"]
+tickers = tckrs.get_tickers_from_file("../local_data/tickers_add.txt")
+
+dt_now = now()
 
 for ticker in tickers:
     with Client(TOKEN) as client:
@@ -41,7 +44,7 @@ for ticker in tickers:
     with Client(TOKEN) as client:
         candles = list(client.get_all_candles(
             figi=ticker_info.instrument.figi,
-            from_=now() - timedelta(days=365*5),
+            from_=dt_now - timedelta(days=365*5),
             interval=intervals_tinkoff[interval],
         ))
 
@@ -92,6 +95,8 @@ for ticker in tickers:
 
     stocks_df.to_csv(f"{DATA_DIR}/{ticker}_{interval}.csv", index=False)
     print('done!\n')
+
+    sleep(10)
 
 
 

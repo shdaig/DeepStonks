@@ -42,7 +42,7 @@ def process_period_trades(period_trades, period=0):
 
 
 if __name__ == "__main__":
-    tickers_1d = tckrs.get_tickers_from_file("../../local_data/tickers_kit.txt")
+    tickers_1d = tckrs.get_tickers_from_file("../../local_data/tickers_all.txt")
 
     best_parameters = dict()
 
@@ -242,5 +242,5 @@ if __name__ == "__main__":
 
         best_parameters[ticker] = param_grid[sort_arg]
 
-    with open('best_parameters_12m.json', 'w') as f:
+    with open('best_parameters_12m_all.json', 'w') as f:
         json.dump(best_parameters, f)

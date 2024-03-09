@@ -23,7 +23,7 @@ if __name__ == "__main__":
     tickers_1d = tckrs.get_tickers_from_file("../../local_data/tickers_kit.txt")
     indicator_generator = IndicatorGenerator()
 
-    with open("best_parameters_12m.json", "r") as f:
+    with open("best_parameters_12m_all.json", "r") as f:
         best_parameters = json.load(f)
 
     for ticker in tickers_1d:
