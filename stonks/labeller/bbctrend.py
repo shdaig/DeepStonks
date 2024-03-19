@@ -4,6 +4,9 @@ from stonks.labeller import bbtrend
 
 
 class BBCTrendLabeller:
+    """
+    Bullish, bearish, consolidation segments labeller
+    """
     def get_labels(self, data_df: pd.DataFrame,
                    difference: float = 0.03,
                    integrate_window: int = 5,
